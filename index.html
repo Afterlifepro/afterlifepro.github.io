@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afterlifepro</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+      body,
+      html {
+        margin: 0;
+        color-scheme: dark light;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* font-family: "Roboto Mono", "Fira Code", monospace; */
+        font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+        font-size: 120pt;
+        flex-direction: column;
+        h1 {
+          font-size: 5vw;
+          width: 100vw;
+          text-align: center;
+        }
+        #spinner {
+          width: 250px;
+          height: 250px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body onclick="nextStep()">
+    <h1>afterlifepro.github.io</h1>
+    <div id="spinner">/</div>
+    <script>
+      const steps = [
+        "\\|/-",
+        [":)", ":|", ":(", ":|"],
+        "⣾⣽⣻⢿⡿⣟⣯⣷",
+        "\\-/|",
+        ["⢎⡰", "⢎⡡", "⢎⡑", "⢎⠱", "⠎⡱", "⢊⡱", "⢌⡱", "⢆⡱"],
+        "▁▃▄▅▆▇█▇▆▅▄▃", 
+        ["◜ ", " ◝", " ◞", "◟ "],
+      ];
+      const timings = [100, 250, 200, 100, 250, 75, 150];
+      let cycle = 0;
+      const spinner = document.getElementById("spinner");
+      const spins = (step) => {
+        spinner.innerHTML = steps[cycle][step];
+        setTimeout(() => {
+          spins((step + 1) % steps[cycle].length);
+        }, timings[cycle]);
+      };
+      const nextStep = () => {
+        cycle = (cycle + 1) % steps.length;
+      };
+      spins(0);
+    </script>
+  </body>
+</html>
